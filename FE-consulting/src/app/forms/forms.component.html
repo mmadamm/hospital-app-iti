@@ -1,0 +1,138 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Onboard Doctor</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Onboarding</li>
+          <li class="breadcrumb-item active">Doctor</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+      
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Onboarding Form</h5>
+
+              <!-- General Form Elements -->
+              <form  [formGroup]="form" >
+                <div class="row mb-3 form" >
+                  <label for="inputText" class="col-sm-2 col-form-label" >Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="name"> 
+                    <div *ngIf="form.controls.name.dirty && form.controls.name.errors?.['required']" class="text-danger text-start ErrorFont">*Name is required</div>
+                    <div *ngIf="form.controls.name.touched && form.controls.name.errors?.['minlength']" class="text-danger text-start ErrorFont">*Name must be at least 3 characters</div>
+                 
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label" >Title</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" formControlName="title">
+                    <div *ngIf="form.controls.title.dirty && form.controls.title.errors?.['required']" class="text-danger text-start ErrorFont">*Title is required</div>
+
+                  </div>
+                </div>
+               <div class="row mb-3">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" style="height: 100px" formControlName="description"></textarea>
+                    <div *ngIf="form.controls.description.dirty && form.controls.description.errors?.['required']" class="text-danger text-start ErrorFont">*Description is required</div>
+
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="text" class="col-sm-2 col-form-label" >Phone Number</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="phoneNumber">
+                    <div>
+                      <div *ngIf="form.get('phoneNumber')?.hasError('phoneNumberExists')" class="text-danger text-start ErrorFont">
+                        *Phone number already exists!
+                      </div>
+                      <div *ngIf="form.controls.phoneNumber.dirty && form.controls.phoneNumber.errors?.['required']" class="text-danger text-start ErrorFont">*Phone Number is required</div>
+                      <div *ngIf="form.controls.phoneNumber.touched && form.controls.phoneNumber.errors?.['phoneNumberLength']" class="text-danger text-start ErrorFont">*Phone Number must be at least 11 characters</div>
+                      <div *ngIf=" form.controls.phoneNumber.dirty&& form.get('phoneNumber')?.hasError('invalidNumber')" class="text-danger text-start ErrorFont">
+                        *Please enter a valid number.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label" >Salary</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" formControlName="salary">
+                    <div *ngIf="form.controls.salary.dirty && form.controls.salary.errors?.['required']" class="text-danger text-start ErrorFont">*Salary is required</div>
+                  </div>
+                </div>
+               
+                <div class="row mb-3">
+                  <label for="inputDate" class="col-sm-2 col-form-label" >Date of Birth</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" formControlName="dateOfBirth">
+                    <div *ngIf="form.controls.dateOfBirth.dirty && form.controls.dateOfBirth.errors?.['required']" class="text-danger text-start ErrorFont">*Date of Birth is required</div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Specialization</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" aria-label="Default select example"  formControlName="specializationId" (change)="onSelect($event)">
+                      <option selected  >Open this select menu</option>
+
+                      <option value="1" *ngFor="let specialization of specializations" [value]="specialization.id ">{{specialization.name}}</option>
+                     
+                    </select>
+                    <div *ngIf="form.controls.specializationId.dirty && form.controls.specializationId.errors?.['required']" class="text-danger text-start ErrorFont">*Specializationis required</div>
+
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10 mb-4 ">
+                    <div class="Ipos">
+                      <input type="password" id="password" class="form-control" formControlName="password">
+                      <i class="bi bi-eye-fill EyePw" (click)="togglePasswordType($event)"></i>
+                    </div>  
+                    <div *ngIf="form.controls.password.touched && form.controls.password.errors?.['required']" class="text-danger text-start ErrorFont">*Password is required</div>
+
+                    <div *ngIf="form.controls.password.invalid && form.controls.password.dirty">
+
+                      <div *ngIf="form.controls.password.errors?.['PasswordTooShort']" class="text-danger text-start ErrorFont">*Password is too short (minimum 8 characters)</div>
+                      <div *ngIf="form.controls.password.errors?.['PasswordRequiresNonAlphanumeric']" class="text-danger text-start ErrorFont">
+                        *Password must contain at least one non-alphanumeric character
+                      </div>
+                      <div *ngIf="form.controls.password.errors?.['PasswordRequiresDigit']" class="text-danger text-start ErrorFont">*Password must contain at least one digit</div>
+                      <div *ngIf="form.controls.password.errors?.['PasswordRequiresUpper']" class="text-danger text-start ErrorFont">
+                        *Password must contain at least one uppercase letter
+                      </div>
+                      <div *ngIf="form.controls.password.errors?.['PasswordRequiresLower']" class="text-danger text-start ErrorFont">
+                        *Password must contain at least one Lowercase letter
+                      </div>
+                  </div></div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">               </label>
+                  <div class="col-sm-10">
+                    <button type="submit"   [disabled]="form.invalid || !form.get('specializationId')?.value" class="btn btn-primary d-block mx-auto" (click)="onSubmit($event)">Submit Form</button>
+                    <div class="error">
+                      <div *ngIf="errorMessage" class="text-danger errormsg">
+                        {{ errorMessage }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </form><!-- End General Form Elements -->
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+        </div> 
+      
+    </section>
+
+  </main><!-- End #main -->

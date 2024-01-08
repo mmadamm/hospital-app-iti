@@ -1,0 +1,17 @@
+.sidebar.collapsed {
+    width: 50px; /* Set your desired collapsed width */
+  }
+  
+  .sidebar-nav.collapsed li span {
+    display: none;
+  }
+  .full-width {
+   @media (min-width: 1200px) {
+    #main,
+    #footer {
+      margin:auto;
+      margin-top: 60px;
+      padding: 20px 30px;
+      transition: all 0.3s;
+    }
+  }}

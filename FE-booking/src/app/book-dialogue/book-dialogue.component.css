@@ -1,0 +1,52 @@
+.background{
+    background-color: #3fbbc0;
+}
+.color{
+    color: #3fbbc0;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+.Registerbtn{
+    margin-left: 4px;
+    width: 40%;
+    border-radius: 10px;
+    align-items: center;
+    color: white;
+    font-size: 15px;
+    background-color:#3fbbc0;
+    border: 1px;
+    padding: 9px;
+}
+.loginbtn{
+
+    margin-left: 4px;
+    width: 40%;
+    border-radius: 10px;
+    align-items: center;
+    color: white;
+    font-size: 15px;
+    background-color:#3fbbc0;
+    border: 1px;
+    padding: 9px;
+}
+.btns{
+    justify-content: center;
+  }
+.closebtn{
+        margin-left: 4px;
+        width: 40%;
+        border-radius: 10px;
+        align-items: center;
+        color: white;
+        font-size: 15px;
+        background-color: rgb(128, 0, 0);
+        border: 1px;
+        padding: 9px;
+}
+
+::ng-deep .text-black {
+    text-align: center;
+    color: black;
+  }

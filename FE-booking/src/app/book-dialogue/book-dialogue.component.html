@@ -1,0 +1,48 @@
+<div class="modal-content rounded-4 shadow">
+  <div > 
+<div class="modal-header border-bottom-0" >
+
+  <h1 *ngIf="patientRegistered" class=" color"><span>Name:</span>{{PatientByPhoneNumber?.name}}</h1>
+</div>
+
+<div class="modal-body py-0 color">
+<h2 class="modal-title fs-5" fs-5>Press Enter When You Are Done</h2>
+<form [formGroup]="Form" (submit)="handleSubmit($event)">
+  <input  id="formInput" class="form-control" (keyup.enter)="getPhoneNumber($event)" formControlName="phoneNumber" type="text" placeholder="Phone number">
+  <!-- <ng-container mat-dialog-content *ngIf="patientAlreadyBooked">
+    <div class="text-center">
+      <span class="text fs-4">
+        Patient already has an appointment with Dr {{ this.data.data.name }} on {{ bookedDate }}
+      </span>
+    </div>
+  </ng-container> -->
+  <!-- <button mat-button mat-dialog-actions *ngIf="!patientAlreadyBooked && token" (click)="onContinue(this.data.data,this.data.date,PatientByPhoneNumber)">Continue</button> -->
+</form>
+</div>
+
+<!-- <a *ngIf="!patientAlreadyBooked && token " (click)="onContinue(this.data.data,this.data.date,PatientByPhoneNumber)">Continue</a> -->
+<!-- <a >Login</a>
+<a >Register</a> -->
+<div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+  <mat-dialog-actions class="btns">
+    <button *ngIf="patientRegistered" [routerLink]="(['/login'])" (click)="loginAndRegister(data)" type="button" class="btn btn-lg background Registerbtn ">Login</button>
+  <button *ngIf="patientRegistered == false" [routerLink]="(['/register'])" (click)="loginAndRegister(data)" type="button" class="btn btn-lg background Registerbtn">Register</button>
+  <button type="button" class="btn btn-lg closebtn" data-bs-dismiss="modal" (click)="close()">Close</button>
+</mat-dialog-actions>
+</div></div>
+<!-- <mat-dialog-actions>
+  <button class="btn btn-lg btn-secondary" mat-button mat-dialog-close>Close</button>
+
+</mat-dialog-actions>-->
+</div> 
+
+<div>
+
+</div>
+<!-- 
+<div class="modal-content rounded-4 shadow" *ngIf="patientAlreadyBooked">
+<div class="modal-body p-5">
+<div  >Patient already has an appointment with Dr {{this.data.doctor.name}} on {{this.data.date}}</div>
+<button type="button" class="btn btn-lg closebtn" data-bs-dismiss="modal" (click)="close()">Close</button>
+</div>
+</div> -->

@@ -1,0 +1,33 @@
+li{
+  list-style: none;
+}
+.dropMenu{
+  width:94%
+}
+.AllHeader{
+  height: 115px;
+  background-color: #fff;
+}
+.mainDropdownList div ul{
+  padding: 0;
+  margin: 0 auto;
+}
+.mainDropdownList div ul li a{
+  padding: 0;
+  padding-left: 15px;
+  margin-bottom: 5px;
+}
+.mainDropdownList div ul li a:hover{
+  color: #3fbcc0;
+}
+.dropMenu a:hover{
+  color: #3fbcc0;
+}
+
+.logo img {
+  width: 200PX;
+  height: 60px;
+}
+#header .logo img {
+  max-height: none;
+}

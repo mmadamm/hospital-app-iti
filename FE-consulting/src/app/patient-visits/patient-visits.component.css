@@ -1,0 +1,33 @@
+.searchTitle {
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+.patientName{
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 3px;
+}
+.cardTitle{
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.cardd{
+    display: flex;
+    margin-top: 10px;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.input-container {
+    margin-left: 15px; 
+}

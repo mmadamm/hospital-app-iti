@@ -1,0 +1,8 @@
+<app-header *ngIf="isLoggedIn || isDoctorLoggedIn || isReceptionLoggedIn"></app-header>
+<div [ngClass]="{'full-width': !isSidebarOpen}">
+<router-outlet *ngIf="isLoggedIn || isDoctorLoggedIn || isReceptionLoggedIn" ></router-outlet>
+</div>
+<ng-toast ></ng-toast>
+<app-login *ngIf="!isLoggedIn && !isDoctorLoggedIn && !isReceptionLoggedIn"></app-login>
+<app-sidebar *ngIf="(isLoggedIn || isDoctorLoggedIn || isReceptionLoggedIn)"></app-sidebar>
+<app-footer *ngIf="isLoggedIn || isDoctorLoggedIn || isReceptionLoggedIn"></app-footer> 

@@ -1,0 +1,236 @@
+
+<div class="MedicalHeader section-title">
+  <h2>Medical History</h2>
+</div>
+    <div class="container d-flex justify-content-center">
+      <ng-container *ngIf="!errorLoadingData; else showError">
+        <div class="MedicalInfo " *ngIf="MedicalHistoryDto">
+          <div>
+            <!-- class="table-container " -->
+            <div class="row">
+              <div class="col-12 ">
+                <table class="table mx-auto my-0 ">
+                  <tbody>
+                    <tr>
+                      <td class="data">Martial Status</td>
+                      <td >
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.martialStatus, 'inactive': !MedicalHistoryDto.martialStatus}">Married</button></td>
+                      <td >
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.martialStatus, 'inactive': MedicalHistoryDto.martialStatus}">Single</button></td>
+                    </tr>
+                    <tr>
+                      <td class="data">Pregnancy</td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.pregnancy, 'inactive': MedicalHistoryDto.pregnancy}">Yes</button>
+                      </td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.pregnancy, 'inactive': !MedicalHistoryDto.pregnancy}">No</button> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">Smoker</td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.smoker, 'inactive': MedicalHistoryDto.smoker}">Yes</button>
+                      </td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.smoker, 'inactive': !MedicalHistoryDto.smoker}">No</button> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">Diabetes</td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.diabetes, 'inactive': MedicalHistoryDto.diabetes}">Yes</button>
+                      </td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.diabetes, 'inactive': !MedicalHistoryDto.diabetes}">No</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">High Blood Pressure</td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.highBloodPressure, 'inactive': MedicalHistoryDto.highBloodPressure}">Yes</button>
+                      </td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.highBloodPressure, 'inactive': !MedicalHistoryDto.highBloodPressure}">No</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">Low Blood Pressure</td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.lowBloodPressure, 'inactive': MedicalHistoryDto.lowBloodPressure}">Yes</button>
+                      </td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.lowBloodPressure, 'inactive': !MedicalHistoryDto.lowBloodPressure}">No</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">Asthma</td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.asthma, 'inactive': MedicalHistoryDto.asthma}">Yes</button>
+                      </td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.asthma, 'inactive': !MedicalHistoryDto.asthma}">No</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">Heart Disease</td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.heartDisease, 'inactive': MedicalHistoryDto.heartDisease}">Yes</button>
+                      </td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.heartDisease, 'inactive': !MedicalHistoryDto.heartDisease}">No</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">Anxiety or Panic Disorder</td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.anxityOrPanicDisorder, 'inactive': MedicalHistoryDto.anxityOrPanicDisorder}">Yes</button>
+                      </td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.anxityOrPanicDisorder, 'inactive': !MedicalHistoryDto.anxityOrPanicDisorder}">No</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">Depression</td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.depression, 'inactive': MedicalHistoryDto.depression}">Yes</button>
+                      </td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.depression, 'inactive': !MedicalHistoryDto.depression}">No</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">Allergies</td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.allergies, 'inactive': MedicalHistoryDto.allergies}">Yes</button>
+                      </td>
+                      <td>
+                        <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.allergies, 'inactive': !MedicalHistoryDto.allergies}">No</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">Blood Group</td>
+                      <td>
+                        <ng-container *ngIf="MedicalHistoryDto.bloodGroup; else showNotProvided">
+                          <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.bloodGroup, 'inactive': MedicalHistoryDto.bloodGroup}">
+                            {{ MedicalHistoryDto.bloodGroup }}
+                          </button>
+                        </ng-container>
+                        <ng-template #showNotProvided>
+                          <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.bloodGroup, 'inactive': !MedicalHistoryDto.bloodGroup}">
+                            Not provided
+                          </button>
+                        </ng-template>
+                      </td>
+                    </tr>                    
+                    <tr>
+                      <td class="data">Previous Surgeries</td>
+                      <td>
+                        <ng-container *ngIf="MedicalHistoryDto.previousSurgeries; else showNone">
+                          <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.previousSurgeries, 'inactive': MedicalHistoryDto.previousSurgeries}">
+                            {{ MedicalHistoryDto.previousSurgeries }}
+                          </button>
+                        </ng-container>
+                        <ng-template #showNone>
+                          <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.previousSurgeries, 'inactive': !MedicalHistoryDto.previousSurgeries}">
+                            None
+                          </button>
+                        </ng-template>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">Medication</td>
+                      <td>
+                        <ng-container *ngIf="MedicalHistoryDto.medication; else showNotProvided">
+                          <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.medication, 'inactive': MedicalHistoryDto.medication}">
+                            {{ MedicalHistoryDto.medication }}
+                          </button>
+                        </ng-container>
+                        <ng-template #showNotProvided>
+                          <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.medication, 'inactive': !MedicalHistoryDto.medication}">
+                            Not provided
+                          </button>
+                        </ng-template>
+                      </td>
+                    </tr>  
+                    <tr>
+                      <td class="data">Hepatitis</td>
+                      <td>
+                        <ng-container *ngIf="MedicalHistoryDto.hepatitis; else showNotProvided">
+                          <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.hepatitis, 'inactive': MedicalHistoryDto.hepatitis}">
+                            {{ MedicalHistoryDto.hepatitis }}
+                          </button>
+                        </ng-container>
+                        <ng-template #showNotProvided>
+                          <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.hepatitis, 'inactive': !MedicalHistoryDto.hepatitis}">
+                            Not provided
+                          </button>
+                        </ng-template>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="data">Other</td>
+                      <td>
+                        <ng-container *ngIf="MedicalHistoryDto.other; else showNotProvided">
+                          <button class="dataButton" [disabled]="true" [ngClass]="{'active': !MedicalHistoryDto.other, 'inactive': MedicalHistoryDto.other}">
+                            {{ MedicalHistoryDto.other }}
+                          </button>
+                        </ng-container>
+                        <ng-template #showNotProvided>
+                          <button class="dataButton" [disabled]="true" [ngClass]="{'active': MedicalHistoryDto.other, 'inactive': !MedicalHistoryDto.other}">
+                            Not provided
+                          </button>
+                        </ng-template>
+                      </td>
+                    </tr>                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="buttons pt-4 pb-2">
+            <div class="d-flex justify-content-center mb-4">
+              <button class="btn appointment-btn scrollto " type="button" [routerLink]="['/profile']">
+                  My Profile
+              </button>
+            </div>
+            <div class="d-flex justify-content-center mb-4">
+              <button class="btn appointment-btn scrollto " disabled type="button" [routerLink]="['/medical-history']">
+                  My Medical History
+              </button>
+            </div>
+            <div class="d-flex justify-content-center mb-4">
+              <button class="btn appointment-btn scrollto"  type="button" [routerLink]="['/appointments']">
+                  My Appointments
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #showError>
+        <div>
+        <h3 class="text-center ">You don't have a medical history yet.</h3>
+        <div class="d-flex justify-content-center mb-4">
+          <div class="buttons">
+            <div class="d-flex justify-content-center mb-4">
+              <button class="btn appointment-btn scrollto " type="button" [routerLink]="['/profile']">
+                  My Profile
+              </button>
+            </div>
+            <div class="d-flex justify-content-center mb-4">
+              <button class="btn appointment-btn scrollto " disabled type="button" [routerLink]="['/medical-history']">
+                  My Medical History
+              </button>
+            </div>
+            <div class="d-flex justify-content-center mb-4">
+              <button class="btn appointment-btn scrollto"  type="button" [routerLink]="['/appointments']">
+                  My Appointments
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </ng-template>
+    </div>
+
+  

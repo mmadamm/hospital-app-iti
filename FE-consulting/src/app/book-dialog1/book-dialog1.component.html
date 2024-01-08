@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="custom-dialog" modal-dialog modal-dialog-centered >
+    <form [formGroup]="Form">
+        <h2  [hidden]="patientRegistered" class="modal-title fs-5 mb-4 text-primary" fs-5>Press Enter When You Are Done</h2>
+      <div [hidden]="patientRegistered" class="form-label fs-6 my-2">Patient Phone Number</div>
+      <input class="form-control mb-4" id="formInput" (keyup.enter)="getPhoneNumber($event)"  formControlName="phoneNumber" type="text" placeholder="Phone number" [hidden]="patientRegistered">
+      <ng-container mat-dialog-content *ngIf="patientAlreadyBooked">
+        <div class="text-center">
+          <span class="text-black fs-5">
+            Patient already has an appointment with Dr {{ this.data.data.name }} on {{ bookedDate }}
+          </span>
+        </div>
+      </ng-container>
+       <mat-dialog-actions class="btns center-button mt-2"> 
+       <button  mat-button mat-dialog-close class="close-btn1" *ngIf="patientAlreadyBooked || !patientRegistered"><span >Close</span></button>
+       </mat-dialog-actions>
+       <div *ngIf="!patientRegistered && !patientAlreadyBooked && showNotRegisteredMsg" class="notRegisteredMsg">
+        This phone number is not associated with any registered patient. Please register the patient first.
+      </div>
+      </form>
+       <div   *ngIf="patientRegistered && !patientAlreadyBooked" >
+          <table class="table table-borderless datatable tableb">
+            <body>
+              <tr>
+                <th scope="row" > Name </th>
+                <td>{{this.PatientByPhoneNumber?.name}}</td>
+              </tr>
+              <tr>
+                <th scope="row"> Phone Number </th>
+                <td>{{this.PatientByPhoneNumber?.phoneNumber}}</td>
+              </tr>
+              <tr>
+                <th scope="row"> Doctor Name </th>
+                <td>{{this.data.data.name}}</td>
+              </tr>
+              <tr>
+                <th scope="row"> Date </th>
+                <td>{{this.data.date}}</td>
+              </tr>
+            </body>
+          </table>
+          <mat-dialog-actions class="btns"> 
+            <button  mat-button mat-dialog-close class="close-btn">Close</button>
+            <button class="book-btn" mat-button mat-dialog-close (click)="bookVisit(this.data.data, this.PatientByPhoneNumber!,this.data.date)">Book</button>
+          </mat-dialog-actions>
+        </div>
+      
+      <!-- <button mat-button mat-dialog-actions *ngIf="!patientAlreadyBooked && token" (click)="onContinue(this.data.data,this.data.date,PatientByPhoneNumber)">Continue</button> -->
+    </div></div>
+    <!-- <a *ngIf="!patientAlreadyBooked && token " (click)="onContinue(this.data.data,this.data.date,PatientByPhoneNumber)">Continue</a> -->
+    <!-- <a *ngIf="patientRegistered" [routerLink]="(['/login'])" (click)="loginAndRegister(data)">Login</a>
+    <a *ngIf="!patientRegistered " [routerLink]="(['/register'])" (click)="loginAndRegister(data)">Register</a> -->
+    
+    

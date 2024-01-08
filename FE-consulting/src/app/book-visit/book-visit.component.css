@@ -1,0 +1,16 @@
+.custom-container {
+    width: 50%;
+  }
+  button{
+    font-size:  110%;;
+  }
+  h1{
+    font-size: 60px;
+  }
+  h4{
+    font-size: 60px;  
+  }
+  .select{
+    display: flexbox;
+    flex-direction: row;
+  }

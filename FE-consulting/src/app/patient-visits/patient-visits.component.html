@@ -1,0 +1,112 @@
+<main id="main" class="main">
+<div class="card">
+  <div class="search-bar">
+    <form #searchForm="ngForm" class="search-form d-flex align-items-center" (ngSubmit)="search()" method="POST" action="#">
+      <div class="search">
+        <div class="searchTitle ">Patient phone number</div>
+        <div class="input-container">
+        <input type="text" name="query" placeholder="Phone number" title="Enter search keyword" [(ngModel)]="patientPhoneNumbaer" required class="form-control bg-white rounded mr-2">
+      </div>
+      <div class="button-container">
+        <button type="submit" title="Search" [disabled]="!searchForm.form.valid" class="btn btn-primary"><i class="bi bi-search"></i></button>
+      </div>
+      </div>      
+    </form>
+  </div>
+    <div class="card-body">
+      <div class="cardd">
+        <div *ngIf="patientVisits?.name" class="cardTitle ">Patient name:</div>
+      <h5 class="patientName py-3">{{patientVisits?.name}}</h5>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Date Of Visit</th>
+            <th scope="col">Doctor</th>
+            <th scope="col">Status</th>
+            <th scope="col">ArrivalTime</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let Visit of patientVisits?.patientVisits">
+          <tr *ngIf="Visit.visitStatus == 'done'" class="table-success">
+            <th scope="row">{{Visit.dateOfVisit}}</th>
+            <td>{{Visit.doctorName}}</td>
+            <td>{{Visit.visitStatus}}</td>
+            <td>{{Visit.arrivalTime}}</td>
+            <td></td>
+          </tr>
+
+          <tr *ngIf="Visit.visitStatus == 'inProgress'" class="table-warning">
+            <th scope="row">{{Visit.dateOfVisit}}</th>
+            <td>{{Visit.doctorName}}</td>
+            <td>{{Visit.visitStatus}}</td>
+            <td>{{Visit.arrivalTime}}</td>
+            <td></td>
+          </tr>
+
+          <tr *ngIf="Visit.visitStatus == 'Arrived'" class="table-primary">
+            <th scope="row">{{Visit.dateOfVisit}}</th>
+            <td>{{Visit.doctorName}}</td>
+            <td>{{Visit.visitStatus}}</td>
+            <td>{{Visit.arrivalTime}}</td>
+            <td></td>
+          </tr>
+
+          <tr *ngIf="!Visit.visitStatus" class="table-danger">
+            <th scope="row">{{Visit.dateOfVisit}}</th>
+            <td>{{Visit.doctorName}}</td>
+            <td>Not Arrived</td>
+            <td>00:00</td>
+            <td (click)="delete($event , Visit.id )"><svg  viewBox="0 0 24 24" class="delete" width="20px"  height="20px" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#f70808"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 11V17" stroke="#ff2e2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M14 11V17" stroke="#ff2e2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M4 7H20" stroke="#ff2e2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#ff2e2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ff2e2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>      
+            </td>
+            </tr>
+        </ng-container>
+          <!-- <tr class="table-primary">
+            <th scope="row">Primary</th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-secondary">
+            <th scope="row">Secondary</th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-success">
+            <th scope="row">Success</th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Danger</th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-warning">
+            <th scope="row">Warning</th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-info">
+            <th scope="row">Info</th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-light">
+            <th scope="row">Light</th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr class="table-dark">
+            <th scope="row">Dark</th>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr> -->
+        </tbody>
+      </table>
+      <!-- End Table Variants -->
+
+    </div>
+  </div>
+</main>

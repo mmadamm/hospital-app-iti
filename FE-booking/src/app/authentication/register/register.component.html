@@ -1,0 +1,115 @@
+
+<form [formGroup]="form">
+        <section class="vh-3 radient-custom ">
+            <div class="container h-80">
+                <div class="row d-flex justify-content-center align-items-center h-80">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card bg-white text-dark" style="border-radius: 2rem;">
+                            <div class="card-body p-5 text-center">
+
+                                <div class="mb-md-5 mt-md-2 pb-2">
+                                    <h2 class="fw-bold mb-2 text-uppercase mb-4">Register</h2>
+
+                                    <div class="form-outline mb-4">
+                                      <input type="text" id="username" class="form-control" formControlName="username" placeholder="Username">
+                                      <div *ngIf="form.controls.username.dirty && form.controls.username.errors?.['required']" class="text-danger text-start ErrorFont">*Username is required</div>
+                                      <div *ngIf="form.controls.username.touched && form.controls.username.errors?.['minlength']" class="text-danger text-start ErrorFont">*Username must be at least 3 characters</div>
+                                    </div>
+
+
+                                    <div class="form-outline mb-4">
+                                      <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNumber" placeholder="Phone Number">
+
+                                      <div>
+                                        <div *ngIf="form.get('phoneNumber')?.hasError('phoneNumberExists')" class="text-danger text-start ErrorFont">
+                                          *Phone number already exists!
+                                        </div>
+                                        <div *ngIf="form.controls.phoneNumber.dirty && form.controls.phoneNumber.errors?.['required']" class="text-danger text-start ErrorFont">*Phone Number is required</div>
+                                        <div *ngIf="form.controls.phoneNumber.touched && form.controls.phoneNumber.errors?.['phoneNumberLength']" class="text-danger text-start ErrorFont">*Phone Number must be at least 11 characters</div>
+                                        <div *ngIf=" form.controls.phoneNumber.dirty&& form.get('phoneNumber')?.hasError('invalidNumber')" class="text-danger text-start ErrorFont">
+                                          *Please enter a valid number.
+                                        </div>
+
+                                      </div>
+                                    </div>
+
+                                    <div class="form-outline mb-4 divPW">
+                                      <div class="Ipos">
+                                        <input type="password" id="password" class="form-control" formControlName="password" placeholder="Password">
+                                        <i class="fas fa-eye EyePw"  (click)="togglePasswordType($event)"></i>
+                                      </div>
+                                        <div *ngIf="f.password.touched && f.password.errors?.['required']" class="text-danger text-start ErrorFont">*Password is required</div>
+
+                                        <div *ngIf="f.password.invalid && f.password.dirty">
+
+                                          <div *ngIf="f.password.errors?.['PasswordTooShort']" class="text-danger text-start ErrorFont">*Password is too short (minimum 8 characters)</div>
+                                          <div *ngIf="f.password.errors?.['PasswordRequiresNonAlphanumeric']" class="text-danger text-start ErrorFont">
+                                            *Password must contain at least one non-alphanumeric character
+                                          </div>
+                                          <div *ngIf="f.password.errors?.['PasswordRequiresDigit']" class="text-danger text-start ErrorFont">*Password must contain at least one digit</div>
+                                          <div *ngIf="f.password.errors?.['PasswordRequiresUpper']" class="text-danger text-start ErrorFont">
+                                            *Password must contain at least one uppercase letter
+                                          </div>
+                                          <div *ngIf="f.password.errors?.['PasswordRequiresLower']" class="text-danger text-start ErrorFont">
+                                            *Password must contain at least one Lowercase letter
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-outline mb-4 divPW">
+
+                                        <div class="Ipos">
+                                        <input  type="password" id="confirmPassword"
+                                        class="form-control" formControlName="confirmPassword" placeholder="Confirm Password"/>
+                                        <i class="fas fa-eye EyePw" (click)="toggleConfirmPasswordType($event)"></i>
+                                        </div>
+
+                                        <div *ngIf="form.controls.confirmPassword.touched">
+                                        <div *ngIf="this.form.controls.password.value !== this.form.controls.confirmPassword.value " class="text-danger text-start ErrorFont">*Password is Wrong</div>
+                                        <div *ngIf="form.controls.password.value === form.controls.confirmPassword.value && form.controls.password.value !== ''" class="text-success text-start ErrorFont">
+                                          *Password is Correct
+                                        </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                      <fieldset data-role="controlgroup">
+                                        <div class="radioGender">Gender:</div>
+                                        <div  class="radioOption">
+                                          <input type="radio" name="gender" id="male" value="Male" formControlName="gender">
+                                          <label for="male">Male</label>
+                                        </div>
+                                        <div  class="radioOption">
+                                          <input type="radio" name="gender" id="female" value="female" formControlName="gender">
+                                          <label for="female">Female</label>
+                                        </div>
+                                        </fieldset>
+                                        <!-- <div *ngIf="form.controls.gender.errors?.['required']" class="text-danger text-start ErrorFont">
+                                          *Please choose your gender
+                                        </div> -->
+                                  </div>
+
+                                  <div>
+                                    <label class="radioOption" for="dob">Date Of Birth:</label>
+                                    <input class="dob" type="date" id="dob" formControlName="date" />
+                                  </div>
+
+                                    <button
+                                        class="btn appointment-btn scrollto btn-lg px-5 me-4 text-dark-50 fw-bold mb-0 "
+                                        type="submit"[disabled]="form.invalid" (click)="handleSubmit($event)">Register</button>
+                                         <!-- Submit Button -->
+                                          <!-- <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Register</button> -->
+
+
+                                </div>
+                                <p class="mb-0">Already have an account?
+                                    <a class="text-dark-50 fw-bold" [routerLink]="['/login']">Login</a>
+                                  </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </form>

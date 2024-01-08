@@ -1,0 +1,111 @@
+
+.profileHeader{
+  margin-top: 30px;
+}
+
+.profileContent{
+  background-color: #bbb;
+  display: flex;
+}
+@media screen and (max-width: 600px) {
+  .profileContent{
+    display: block
+  }
+  .profileContent .profileImage{
+    width: 100%;
+    background-color: aqua;
+    text-align: center;
+  }
+  .profileContent .profileImage img{
+    width: 50%;
+  }
+  .profileContent .profileInfo{
+    width: 100%;
+    text-align: center;
+  }
+}
+.profileImage{
+  /* background-color: #3fbbc0; */
+  background-color: #fff;
+  width: 30%;
+  text-align: center;
+
+}
+
+.profileImage img{
+  width: 50%;
+  border-radius: 50%;
+  margin: 15px
+
+}
+
+@media screen and (max-width: 400px) {
+  .profileImage img{
+    width: 100%;
+    border-radius: 50%;
+    margin: 15px;
+  }
+}
+
+.profileInfo{
+  /* background-color: #3fbbc0; */
+  background-color: #fff;
+  width: 70%;
+  margin: auto;
+  padding: 20px;
+}
+.maindata{
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  position: relative;
+}
+.maindata:hover .outputdata{
+  background-color: #3fbbc0;
+  color: black;
+}
+.outputdata::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 30%;
+  width: 70%;
+  height: 70%;
+  background-color: #3fbbc0; /* Color to fill on hover */
+  transform: scaleX(0); /* Initial scaleX to 0 */
+  transform-origin: left; /* Transform origin from the left */
+  transition: transform 0.5s ease; /* Animation transition */
+  /* z-index: -1; */
+}
+.maindata:hover::before {
+  transform: scaleX(1); /* ScaleX to 1 on hover */
+}
+.data{
+  background-color: #f6f6f6;
+  /* border: solid 2px #3fbbc0; */
+  display: flex;
+  width: 40%;
+  font-size: 20px;
+  border: 1px #3fbbc0 solid;
+  /* padding: 5px; */
+  color: #000000;
+  padding-left: 5px;
+  height: 100%;
+}
+
+.outputdata{
+  /* padding: 5px; */
+  /* background-color: #ecefef; */
+  position: relative;
+  width: 70%;
+  padding-left: 5px;
+  border: 1px #3fbbc0 solid;
+  /* text-align: center; */
+  z-index: 555;
+  font-size: 20px;
+  transition: background-color 2s ease;
+}
+.buttons{
+  display: flex;
+  justify-content: center;
+}

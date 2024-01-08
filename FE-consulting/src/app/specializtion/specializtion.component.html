@@ -1,0 +1,62 @@
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Specializations</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Specializations</li>
+        <li class="breadcrumb-item active">My specializations</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-6">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Current Specialization</h5>
+            <!-- Table with stripped rows -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Specialization</th>
+                  <th scope="col">Specialization's Id</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let s of specializations; let i = index">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{s.name}}</td>
+                  <td>{{s.id}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Add Specialization</h5>
+            <form [formGroup]="form" class="table table-striped">
+              <p for="adding">Name</p>
+              <input type="text" id="adding" class="specName" formControlName="specName" (ngModelChange)="onInputChange()">
+              <div class="mt-3 mb-3">
+                <button type="submit" class="btn btn-primary subButton" (click)="onSubmit($event)" [disabled]="isInputEmpty">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main><!-- End #main -->

@@ -1,0 +1,245 @@
+<!-- ======= Hero Section ======= -->
+<section id="hero" style="background-image: url('assets/img/1.jpg');  background-size: cover;">
+  <div>
+    <div style="height: 400px;">
+    <div class="row justify-content-center pt-5 ">
+      <div class=" col-md-6">
+        <h4 class="mt-5 text-center mb-0 fw-light ">Your Health, </h4>
+        <h1 class=" h-25 mt-3 text-center mb-5 fw-bold">Our Priority </h1>
+      </div>
+      <!-- ======= Search Section ======= -->
+       <div class="custom-container container ">
+      <div class="row justify-content-center d-flex justify-content-around p-2">
+        <select (change)="selected($event)" class="col-lg-4  ml-md-0 mb-2 mb-lg-0 form-select border-2">
+          <option selected="" value="All" id="All">All Specialization</option>
+          <option  *ngFor="let Specialization of specializations" [value]="Specialization.id "> {{ Specialization.name }}</option>
+          </select>
+        <select  (change)="doctorSelected($event)" class=" col-lg-4  ml-md-0 mb-2 mb-lg-0 form-select border-2">
+        <option value="allDoctors" selected="">All Doctors</option>
+        <ng-container *ngIf="isSpecializationSelected" >
+          <ng-container *ngFor="let doctor of Doctors"> <option *ngIf="doctor.status && doctor.weekSchadual?.length==7" [value]="doctor.id">{{doctor.name}}</option></ng-container>
+        </ng-container>
+        <ng-container *ngIf="!isSpecializationSelected" >
+
+          <ng-container *ngFor="let doctor of doctors"> <option *ngIf="doctor.status && doctor.weekSchadual?.length==7" [value]="doctor.id">{{doctor.name}}</option></ng-container>
+        </ng-container>
+
+      </select>
+      <button class="col-lg-2 btn appointment-btn scrollto btn-lg text-dark-50 fw-bold mx-sm-auto mx-md-auto mx-lg-1 mx-0 " (click)="onSearch($event)">Search</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- ======= Search Section ======= -->
+<!-- ======= Featured Services Section ======= -->
+<section id="featured-services" class="featured-services section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row">
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon"><i class="fas fa-heartbeat"></i></div>
+          <h4 class="title"><a href="">Healing starts here </a></h4>
+          <p class="description">Effective treatment depends on getting the right diagnosis. Our experts diagnose and
+            treat the toughest medical challenges.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon"><i class="fas fa-pills"></i></div>
+          <h4 class="title"><a href="">Expert Care, Personalized Approach</a></h4>
+          <p class="description">Our dedicated team provides individualized care, focusing on your unique health needs
+            for a healthier you.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon"><i class="fas fa-thermometer"></i></div>
+          <h4 class="title"><a href="">Innovative Cures, Trusted Medications</a></h4>
+          <p class="description">Discover cutting-edge cures and reliable medications tailored to provide effective and
+            lasting relief for your well-being.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+          <div class="icon"><i class="fas fa-dna"></i></div>
+          <h4 class="title"><a href="">Minimal Wait Times, Maximum Care</a></h4>
+          <p class="description">Experience prompt service with minimal wait times, ensuring you receive the care you
+            need without delay.</p>
+        </div>
+      </div>
+
+    </div>
+
+      </div>
+    </section><!-- End Featured Services Section -->
+
+  <!-- ======= Cta Section ======= -->
+  <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+    <div class="text-center">
+      <h3>In an emergency? Need help now?</h3>
+      <p>Our team is ready to provide immediate assistance. Call <strong>Emergency Services</strong> now.</p>
+      <a class="cta-btn scrollto" href="#appointment">Make an Make an Appointment</a>
+    </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Our Vision</h2>
+      <p>At La vida, we envision a healthier community through compassionate care, innovative treatments, and a
+        commitment to excellence. Our mission is to provide patient-centered healthcare that exceeds expectations and
+        promotes well-being for all.</p>
+    </div>
+
+    <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Leading with a commitment to excellence, we strive to redefine healthcare by providing compassionate and
+              innovative solutions for our community's well-being. Our dedication is reflected in every aspect of care
+              we deliver.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+            <h3>Ryan Maddison</h3>
+            <h4>Ceo &amp; Founder</h4>
+          </div>
+        </div><!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis
+              quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+            <h3>Sara Wilsson</h3>
+            <h4>Designer</h4>
+          </div>
+        </div><!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor
+              labore quem eram duis noster aute amet eram fore quis sint minim.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+            <h3>Jena Karlis</h3>
+            <h4>Store Owner</h4>
+          </div>
+        </div>
+        <!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim
+              dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+            <h3>Matt Brandon</h3>
+            <h4>Freelancer</h4>
+          </div>
+        </div><!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa
+              labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+            <h3>John Larson</h3>
+            <h4>Entrepreneur</h4>
+          </div>
+        </div><!-- End testimonial item -->
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+</section><!-- End Testimonials Section -->
+
+    <!-- ======= Frequently Asked Questioins Section ======= -->
+    <section id="faq" class="faq ">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <ul class="faq-list">
+
+          <li>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1"> How can I search for a specific doctor or specialist on the platform? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                To find a specific doctor or specialist, simply select the desired specialization and the preferred doctor, then proceed to search for their available appointments. Our platform allows you to tailor your search based on your specific medical needs and the doctor's availability.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">What steps do I need to follow to book an appointment with a doctor? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                After selecting your preferred doctor, you can choose an available date and time that suits you. Once decided, confirm the booking to secure your appointment. It's that simple!
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">How can I rate and review a doctor after my appointment? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Your feedback matters! After your appointment, effortlessly share your experience by navigating to your profile. There, you'll find a comprehensive list of your appointments, allowing you to seamlessly rate and review each one. Your valuable insights contribute to enhancing our services and helping others make informed healthcare choices. Thank you for being an essential part of our community.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question"> Is my personal and health information secure on the platform? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Absolutely, your data is highly secure. After logging in, visit your profile to access your medical history with confidence. Trust in our strong security measures for a safe and confidential healthcare experience.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">How can I reach customer support for assistance or if I encounter issues with the platform? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq6" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Our dedicated 24/7 hotline is here to assist with any issue or answer any questions you may have. Ensuring your seamless experience is our priority, and our friendly support team is just a call away. Feel free to reach out anytime – we're here to help!
+              </p>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section><!-- End Frequently Asked Questioins Section -->

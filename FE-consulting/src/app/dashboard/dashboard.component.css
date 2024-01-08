@@ -1,0 +1,78 @@
+.progress{
+  width: 90%;
+  margin-left: 15px;
+}
+.markDiv{
+  position: relative;
+}
+.firstMark{
+  position: absolute;
+  top: 0;
+}
+
+.bullets{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  /* background-color: black; */
+  margin-right: 5px;
+}
+
+.clr{
+  background-color: lightgreen;
+}
+
+.clr2{
+  background-color: lightcoral;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chart-item {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.Highprogress {
+  height: 20px;
+  margin-left: 0;
+  border-radius: 0;
+  --bs-progress-bg: none;
+}
+
+.HighDemandprogress-bar {
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 0;
+  /* border-radius: 5px; */
+}
+
+.HighDemand {
+  width: 100%;
+}
+
+.HighDemand td:first-child {
+  width: 1%;
+  white-space: nowrap;
+  border-right: 2px solid black
+}
+
+.HighDemand td:last-child {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+.HighDemandTHead{
+  border-bottom: 2px solid black;
+}
+
+.HighDemandTHead TD:last-child{
+  padding-left: 10px;
+}

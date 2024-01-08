@@ -1,0 +1,46 @@
+.ErrorFont{
+  font-size: 12px;
+  margin-left: 8px ;
+}
+
+.radioGender{
+  text-align: left;
+  margin-left: 10px;
+  color: #6c757d;
+}
+
+.radioOption{
+  display: block;
+  text-align: left;
+  margin-left: 10px;
+  color: #6c757d;
+}
+
+.radioOption input{
+  margin: 8px;
+}
+
+.dob{
+  display: block;
+  text-align: left;
+  margin-left: 15px;
+  color: #6c757d;
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+.Ipos{
+  position: relative;
+}
+.EyePw{
+  position: absolute;
+right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* top: 0; */
+  /* right: 0; */
+  color: black
+}
+.EyePw:hover{
+  color: #3fbbc0;
+  cursor: pointer;
+}

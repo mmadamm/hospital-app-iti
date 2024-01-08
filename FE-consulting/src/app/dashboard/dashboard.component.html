@@ -1,0 +1,422 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+          <div class="row">
+
+            <!-- patients Number Card -->
+            <div class="col-xxl-6 col-md-6" *ngIf="isLoggedIn">
+              <div class="card info-card sales-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Number Of Patients <span>| Today</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{todayPatients}}</h6>
+                      <span class="text-success small pt-1 fw-bold" *ngIf="todayPatients >= yesterdayPatients">
+                        {{((todayPatients - yesterdayPatients) / yesterdayPatients * 100).toFixed(2)}}%
+                      </span>
+                      <span class="text-danger small pt-1 fw-bold" *ngIf="todayPatients < yesterdayPatients">
+                        {{((todayPatients - yesterdayPatients) / yesterdayPatients * 100).toFixed(2)}}%
+                      </span>
+                      <div class="text-muted small pt-1 ps-1 mt-0">
+                        compared to yesterday
+                      </div>
+
+
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End patient Number Card -->
+
+            <!-- doctor Number Card -->
+            <div class="col-xxl-6 col-md-6" *ngIf="isLoggedIn">
+              <div class="card info-card revenue-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Doctors Available <span>| Today </span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-person-lines-fill"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>{{todayDoctors}}</h6>
+                      <span class="text-success small pt-1 fw-bold" *ngIf=" todayDoctors >= yesterdayDoctors">
+                        {{((todayDoctors - yesterdayDoctors) / yesterdayDoctors * 100).toFixed(2)}}%
+                      </span>
+                      <span class="text-danger small pt-1 fw-bold" *ngIf="todayDoctors < yesterdayDoctors">
+                        {{((todayDoctors - yesterdayDoctors) / yesterdayPatients * 100).toFixed(2)}}%
+                      </span>
+                      <div class="text-muted small pt-1 ps-1 mt-0">
+                        compared to yesterday
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Doctor Number Card -->
+
+            <!-- Doctors today's capacity  Card -->
+            <div class="col-xxl-12 col-xl-12" *ngIf="isLoggedIn">
+
+              <div class="card info-card customers-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Doctors Capacity <span>| Today </span></h5>
+
+                  <div class="d-flex align-items-center barCard">
+                    <div class="card-icon rounded-circle text-dark bg-light d-flex align-items-center justify-content-center">
+                      <i class="bi bi-person-lines-fill"></i>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar  text-dark bg-warning" role="progressbar" [style.width.%]="(todayDoctors / numberOfAllDoctors) * 100" [attr.aria-valuenow]="(todayDoctors / numberOfAllDoctors) * 100" aria-valuemin="0" aria-valuemax="100">{{((todayDoctors / numberOfAllDoctors) * 100).toFixed(2)}}%</div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <div class="d-flex align-items-center py-2 px-2">
+                        <span class="bullets bg-success"></span>
+                        <span class="text-success">{{todayDoctors}} Available Doctors Out Of {{numberOfAllDoctors}} Doctors</span>                    </div>
+                    </div>
+                    <div class="d-flex align-items-center py-2 px-2">
+                        <span class="bullets bg-danger"></span>
+                        <span class="text-danger">{{numberOfAllDoctors - todayDoctors}} Unavailable Doctors Out Of {{numberOfAllDoctors}} Doctors</span>                    </div>
+                    </div>
+
+              </div>
+
+            </div><!-- End Doctors today's capacity Card -->
+
+            <!-- Number of patient in specific day -->
+            <div class="col-12" *ngIf="isLoggedIn">
+              <div class="card info-card">
+                <div class="filter mx-5">
+                  <input type="date" id="datePicker" name="datePicker" class="form-control" (input)="updateDatePicker($event)">
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Hospital Statisics In
+                    <span *ngIf="datePicker">|{{datePicker}}</span>
+                    <span *ngIf="!datePicker">| mm/dd/yyyy</span>
+                  </h5>
+
+                  <div class="d-flex align-items-center justify-content-evenly">
+
+                    <div class="d-flex sales-card">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people"></i>
+                        </div>
+                        <div class="ps-3">
+                          <h6>{{numberOfPatients}}</h6>
+                          <span class="small pt-1 fw-bold">
+                            Patients
+                          </span>
+                        </div>
+                    </div>
+                    <div class="d-flex revenue-card">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-person-lines-fill"></i>
+                        </div>
+                        <div class="ps-3">
+                          <h6>{{numberOfDoctors}}</h6>
+                          <span class="small pt-1 fw-bold">
+                            Doctors
+                          </span>
+                        </div>
+                    </div>
+
+
+                  </div>
+
+
+                </div>
+
+              </div>
+            </div><!-- End statisics -->
+
+            <!-- Top rated -->
+            <div class="col-12" *ngIf="isLoggedIn">
+                          <div class="card top-selling overflow-auto">
+
+                            <div class="card-body pb-0">
+                              <h5 class="card-title">Top Rated Doctors </h5>
+
+                              <table class="table table-bordered">
+                                <thead class="bg-dark">
+                                  <tr >
+                                    <th class="bg-dark text-light" scope="col">#</th>
+                                    <th class="bg-dark text-light" scope="col">Name</th>
+                                    <th class="bg-dark text-light" scope="col">Rate</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let topDoctor of topRatedArray ; let i = index">
+                                    <th class="clr">{{i+1}}</th>
+                                    <td class="clr">{{topDoctor.name}}</td>
+                                    <td class="clr">{{topDoctor.averageRate.toFixed(2)}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            <h5 class="card-title">Lowest Rated Doctors </h5>
+                              <table class="table table-bordered">
+                                <thead class="bg-dark">
+                                  <tr >
+                                    <th class="bg-dark text-light" scope="col">#</th>
+                                    <th class="bg-dark text-light" scope="col">Name</th>
+                                    <th class="bg-dark text-light" scope="col">Rate</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let lowDoctor of lowestRatedArray ; let i = index">
+                                    <th class="clr2">{{ numberOfAllDoctors-topRatedArray.length+1+i}}</th>
+                                    <td class="clr2">{{lowDoctor.name}}</td>
+                                    <td class="clr2">{{lowDoctor.averageRate.toFixed(2)}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                            </div>
+
+                          </div>
+            </div><!-- End Top rated -->
+
+            <!-- High Demand Specializations -->
+            <div class="col-12" *ngIf="isLoggedIn">
+
+            <div class=" card card-body pb-0">
+              <h3 class="card-title">High Demand Specialization <span>| This Month</span></h3>
+
+              <table class="table table-borderless HighDemand">
+                <thead class="HighDemandTHead">
+                  <tr>
+                    <td class="fw-bold">Name</td>
+                    <td class="fw-bold">Number Of Visits This Month</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let highOne of HighDemandArray ; let i = index">
+                    <td> {{ highOne.specializationName }}</td>
+                    <td>
+                      <div class="Highprogress">
+                        <div class="HighDemandprogress-bar"
+                            role="progressbar"
+                            [style.width.%]="calculateProgressBarWidth(highOne.length)"
+                            [attr.aria-valuenow]="highOne.length"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            [style.backgroundColor]="getProgressBarColor()">
+                          {{ highOne.length }}
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </div>
+          </div><!-- End High Demand-->
+
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+                <!--for reception-->
+                <div *ngIf="isReceptionLoggedIn" class="row justify-content-center pt-2">
+                  <select (change)="selected($event)" class="col form-select border-2 py-3 mx-3">
+                    <option selected="" value="0" id="All">All Specialization</option>
+                    <option  *ngFor="let Specialization of this.specializations" [value]="Specialization.id "> {{ Specialization.name }}</option>
+                    </select>
+                  <select  (change)="doctorSelected($event)" class=" col form-select border-2 py-3">
+                  <option value="allDoctors" selected="">All Doctors</option>
+                  <ng-container *ngIf="isSpecializationSelected" >
+                    <option *ngFor="let doctor of Doctors"  [value]="doctor.id"> {{doctor.name}} </option>
+                  </ng-container>
+                  <ng-container *ngIf="!isSpecializationSelected" >
+                    <option *ngFor="let doctor of doctors" [value]="doctor.id"> {{doctor.name}}</option>
+                  </ng-container>
+
+                </select>
+                <button class=" col-md-2 btn appointment-btn scrollto btn-lg me-4 text-dark-50 fw-bold mb-0" (click)="onSearch($event)">Search</button>
+                </div>
+
+                <div *ngIf="isReceptionLoggedIn" class="card-body">
+                  <h5 class="card-title">Schedule <span>| Today</span></h5>
+
+                  <table class="table table-borderless datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">Patient Name</th>
+                        <th scope="col">Patient Phone Number</th>
+                        <th scope="col">Arrival Time</th>
+                        <th scope="col">Visit Start Time</th>
+                        <th scope="col">Visit End Time</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let visit of visits">
+                        <th scope="row"><a href="#">{{visit.name}}</a></th>
+                        <th scope="row">{{visit.patientPhoneNumber}}</th>
+                        <td *ngIf="visit.visitStatus">{{visit.arrivalTime}}</td>
+                        <td *ngIf="visit.visitStatus == 'inProgress' || visit.visitStatus == 'done'">{{visit.visitStartTime}}</td>
+                        <td *ngIf="visit.visitStatus == 'done'">{{visit.visitEndTime}}</td>
+
+                        <td *ngIf="!visit.visitStatus">00:00</td>
+                        <td *ngIf="!visit.visitStatus || visit.visitStatus == 'Arrived'">00:00</td>
+                        <td *ngIf="visit.visitStatus != 'done'">00:00</td>
+
+                        <td *ngIf="!visit.visitStatus"><span class="badge text-primary">Not Arrived</span></td>
+                        <td *ngIf="!visit.visitStatus || visit.visitStatus == 'Arrived'" ><span class="badge bg-danger"><a (click)="onArrive('Arrived', visit.id)">Arrived</a></span></td>
+                        <td *ngIf="visit.visitStatus != 'done'"><span class="badge bg-warning"><a (click)="onArrive( 'inProgress', visit.id)">In progress</a></span></td>
+                        <td *ngIf="visit.visitStatus != 'done'"><span class="badge bg-success"><a (click)="onArrive( 'done', visit.id)">Done</a></span></td>
+                        <td *ngIf="visit.visitStatus == 'done'"><span class="badge bg-success">Done</span></td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                </div>
+              <!--for doctor-->
+                <div *ngIf="isDoctorLoggedIn" class="card-body">
+                  <h5 class="card-title">Schedule <span>| Today</span></h5>
+
+                  <table class="table table-borderless datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">Patient Name</th>
+                        <th scope="col">Arrival Time</th>
+                        <th scope="col">Visit Start Time</th>
+                        <th scope="col">Visit End Time</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let visit of visits">
+                        <th scope="row"><a [routerLink]="['/patientProfile']" (click)="goToProfile(visit.patientPhoneNumber!)">{{visit.name}}</a></th>
+
+                        <td *ngIf="visit.visitStatus">{{visit.arrivalTime}}</td>
+                        <td *ngIf="visit.visitStatus == 'inProgress' || visit.visitStatus == 'done'">{{visit.visitStartTime}}</td>
+                        <td *ngIf="visit.visitStatus == 'done'">{{visit.visitEndTime}}</td>
+
+                        <td *ngIf="!visit.visitStatus">00:00</td>
+                        <td *ngIf="!visit.visitStatus || visit.visitStatus == 'Arrived'">00:00</td>
+                        <td *ngIf="visit.visitStatus != 'done'">00:00</td>
+
+                        <td *ngIf="!visit.visitStatus"><span class="badge text-primary">Not Arrived</span></td>
+                        <td *ngIf="visit.visitStatus == 'Arrived'"><span class="badge bg-danger">Arrived</span></td>
+                        <td *ngIf="visit.visitStatus == 'inProgress'"><span class="badge bg-warning">In progress</span></td>
+                        <td *ngIf="visit.visitStatus == 'done'"><span class="badge bg-success">Done</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+
+
+
+          </div>
+        </div><!-- End Left side columns -->
+
+       
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+
+
+      <!-- Line Chart -->
+                  <!-- <div id="reportsChart"></div>
+
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      new ApexCharts(document.querySelector("#reportsChart"), {
+                        series: [{
+                          name: 'Sales',
+                          data: [31, 40, 28, 51, 42, 82, 56],
+                        }, {
+                          name: 'Revenue',
+                          data: [11, 32, 45, 32, 34, 52, 41]
+                        }, {
+                          name: 'Customers',
+                          data: [15, 11, 32, 18, 9, 24, 11]
+                        }],
+                        chart: {
+                          height: 350,
+                          type: 'area',
+                          toolbar: {
+                            show: false
+                          },
+                        },
+                        markers: {
+                          size: 4
+                        },
+                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                        fill: {
+                          type: "gradient",
+                          gradient: {
+                            shadeIntensity: 1,
+                            opacityFrom: 0.3,
+                            opacityTo: 0.4,
+                            stops: [0, 90, 100]
+                          }
+                        },
+                        dataLabels: {
+                          enabled: false
+                        },
+                        stroke: {
+                          curve: 'smooth',
+                          width: 2
+                        },
+                        xaxis: {
+                          type: 'datetime',
+                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                        },
+                        tooltip: {
+                          x: {
+                            format: 'dd/MM/yy HH:mm'
+                          },
+                        }
+                      }).render();
+                    });
+                  </script> -->
+                  <!-- End Line Chart -->

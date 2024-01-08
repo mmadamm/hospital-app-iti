@@ -1,0 +1,120 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Onboard Patient</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Onboarding</li>
+          <li class="breadcrumb-item active">Patient</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+      
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Onboarding Form</h5>
+
+              <!-- General Form Elements -->
+              <form  [formGroup]="form" >
+                <div class="row mb-3 form" >
+                  <label for="inputText" class="col-sm-2 col-form-label" >Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="name"> 
+                    <div *ngIf="form.controls.name.dirty && form.controls.name.errors?.['required']" class="text-danger text-start ErrorFont">*Name is required</div>
+                    <div *ngIf="form.controls.name.touched && form.controls.name.errors?.['minlength']" class="text-danger text-start ErrorFont">*Name must be at least 3 characters</div>
+                 
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="text" class="col-sm-2 col-form-label" >Phone Number</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="phoneNumber">
+                    <div>
+                      <div *ngIf="form.get('phoneNumber')?.hasError('phoneNumberExists')" class="text-danger text-start ErrorFont">
+                        *Phone number already exists!
+                      </div>
+                      <div *ngIf="form.controls.phoneNumber.dirty && form.controls.phoneNumber.errors?.['required']" class="text-danger text-start ErrorFont">*Phone Number is required</div>
+                      <div *ngIf="form.controls.phoneNumber.touched && form.controls.phoneNumber.errors?.['phoneNumberLength']" class="text-danger text-start ErrorFont">*Phone Number must be at least 11 characters</div>
+                      <div *ngIf=" form.controls.phoneNumber.dirty&& form.get('phoneNumber')?.hasError('invalidNumber')" class="text-danger text-start ErrorFont">
+                        *Please enter a valid number.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
+                <div class="row mb-3">
+                  <label for="inputDate" class="col-sm-2 col-form-label" >Date of Birth</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" formControlName="dateOfBirth">
+                    <div *ngIf="form.controls.dateOfBirth.dirty && form.controls.dateOfBirth.errors?.['required']" class="text-danger text-start ErrorFont">*Date of Birth is required</div>
+                  </div>
+                </div>
+
+                
+                <fieldset class="row mb-3"  data-role="controlgroup">
+                  <legend class="radioGender" for="inputDate" class="col-form-label col-sm-2 pt-0">Gender:</legend>
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input type="radio" class="form-check-input" name="gender" id="male" value="Male" formControlName="gender">
+                      <label  class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input"  name="gender" id="female" value="female" formControlName="gender">
+                        <label for="female">Female</label>
+                    </div>
+                  </div>
+              </fieldset>
+
+
+                <div class="row mb-3">
+                  <label for="inputPassword" class="col-sm-2 col-form-label" >Password</label>
+                  <div class="col-sm-10 mb-4 ">
+                    <div class="Ipos">
+                      <input type="password" id="password" class="form-control" formControlName="password">
+                      <i class="bi bi-eye-fill EyePw" (click)="togglePasswordType($event)"></i>
+                    </div>  
+                    <div *ngIf="form.controls.password.touched && form.controls.password.errors?.['required']" class="text-danger text-start ErrorFont">*Password is required</div>
+
+                    <div *ngIf="form.controls.password.invalid && form.controls.password.dirty">
+
+                      <div *ngIf="form.controls.password.errors?.['PasswordTooShort']" class="text-danger text-start ErrorFont">*Password is too short (minimum 8 characters)</div>
+                      <div *ngIf="form.controls.password.errors?.['PasswordRequiresNonAlphanumeric']" class="text-danger text-start ErrorFont">
+                        *Password must contain at least one non-alphanumeric character
+                      </div>
+                      <div *ngIf="form.controls.password.errors?.['PasswordRequiresDigit']" class="text-danger text-start ErrorFont">*Password must contain at least one digit</div>
+                      <div *ngIf="form.controls.password.errors?.['PasswordRequiresUpper']" class="text-danger text-start ErrorFont">
+                        *Password must contain at least one uppercase letter
+                      </div>
+                      <div *ngIf="form.controls.password.errors?.['PasswordRequiresLower']" class="text-danger text-start ErrorFont">
+                        *Password must contain at least one Lowercase letter
+                      </div>
+                  </div></div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label"></label>
+                  <div class="col-sm-10">
+                    <button type="submit"   [disabled]="form.invalid " class="btn btn-primary d-block mx-auto" (click)="onSubmit($event)">Submit Form</button>
+                    <div class="error">
+                      <div *ngIf="errorMessage" class="text-danger errormsg">
+                        {{ errorMessage }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </form><!-- End General Form Elements -->
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+        </div> 
+      
+    </section>
+
+  </main><!-- End #main -->

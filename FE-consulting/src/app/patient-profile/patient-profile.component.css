@@ -1,0 +1,57 @@
+.clr{
+  color: #4154f1;
+}
+
+.innerCard{
+  background-color: aqua;
+}
+
+.clr2{
+  color: rgba(1, 41, 112, 0.6);
+}
+
+.clr3{
+  color: #012970;
+}
+
+.textareaDiv textarea{
+  border: 2px solid #012970;
+  margin: 15px;
+  margin-top: 0;
+  height: 100px;
+  width: 60%;
+}
+.textareaDiv:nth-of-type(2) textarea{
+  margin-left: 5px;
+}
+@media (max-width: 727px) {
+    .textareaDiv:nth-of-type(2) textarea {
+      margin-left: 15px;
+    }
+}
+
+.submitButton{
+  position: relative;
+  height: 50px;
+}
+.submitButton button{
+position: absolute;
+right: 5%;
+top: 15%;
+}
+.visitCard{
+  position: relative;
+}
+.cardSign i {
+  font-size: 30px;
+  margin: 25px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.bi-clock{
+  color: gold;
+}
+.bi-check{
+  color: green;
+}

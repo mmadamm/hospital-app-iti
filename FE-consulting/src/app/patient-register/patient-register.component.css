@@ -1,0 +1,29 @@
+.Ipos{
+    position: relative;
+  }
+
+  .EyePw{
+    position: absolute;
+  right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: black
+  }
+
+  .EyePw:hover{
+    color: #012970;
+    cursor: pointer;
+  }
+  .ErrorFont{
+    font-size: 12px;
+    margin-left: 8px ;
+  }
+  .errormsg {
+    font-size: 14px;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 20px;
+  }
+  .error{
+    display: block;
+  }

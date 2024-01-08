@@ -1,0 +1,35 @@
+<div  class="modal-content rounded-4 shadow">
+  <div class="modal-body p-5">
+    <table *ngIf="!VisitsForPatient" class="table">
+      <body>
+        <tr>
+          <th scope="row"> Name </th>
+          <td>{{this.data.patient.name}}</td>
+        </tr>
+        <tr>
+          <th scope="row"> phone Number </th>
+          <td>{{this.data.patient.phoneNumber}}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Doctor Name </th>
+          <td>{{this.data.doctor.name}}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Date </th>
+          <td>{{this.data.date}}</td>
+        </tr>
+      </body>
+    </table>
+    <div *ngIf="VisitsForPatient">Patient already has an appointment with Dr {{this.data.doctor.name}} on {{this.data.date}}</div>
+    <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+      <mat-dialog-actions class="btns"> 
+      <button *ngIf="!VisitsForPatient" type="button" class="btn btn-lg bookbtn" (click)="bookVisit(this.data.doctor, this.data.patient,this.data.date)">Book</button>
+      <button type="button" class="btn btn-lg btn-secondary closebtn" data-bs-dismiss="modal" (click)="close()">Close</button>
+      </mat-dialog-actions>
+    </div>
+    <!-- <mat-dialog-actions> -->
+      <!-- <button  mat-button mat-dialog-close>Close</button> -->
+      <!-- <button class="appointment-btn" mat-button mat-dialog-actions (click)="bookVisit(this.data.doctor, this.data.patient,this.data.date)">Book</button> -->
+    <!-- </mat-dialog-actions> -->
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<!-- ======= Hero Section ======= -->
+<section id="hero" style="background-image: url('assets/img/1.jpg');  background-size: cover;">
+    <div>
+      <div style="height: 400px;">
+        <!-- ======= Search Section ======= -->
+        <div class="row justify-content-center pt-5  ">
+          <div class="custom-container container ">
+            <div class="row justify-content-center pt-2 search ">
+          <select (change)="selected($event)"  class="col form-select border-2 py-3 mx-3 ">
+            <option selected="" value="All" id="All">All Specialization</option>
+            <option  *ngFor="let Specialization of specializations" [value]="Specialization.id "> {{ Specialization.name }}</option>
+            </select>
+          <select  (change)="doctorSelected($event)"  class="col form-select border-2 py-3 mx-3 ">
+          <option value="allDoctors" selected="">All Doctors</option>   
+          <ng-container *ngIf="isSpecializationSelected" >
+            <ng-container *ngFor="let doctor of Doctors"> <option *ngIf="doctor.status && doctor.weekSchadual?.length==7" [value]="doctor.id">{{doctor.name}}</option></ng-container>
+          </ng-container>
+          <ng-container *ngIf="!isSpecializationSelected" >
+  
+            <ng-container *ngFor="let doctor of doctors"> <option *ngIf="doctor.status && doctor.weekSchadual?.length==7" [value]="doctor.id">{{doctor.name}}</option></ng-container>
+          </ng-container>
+  
+        </select>
+        <button class="col-lg-2 btn appointment-btn scrollto btn-lg text-dark-50 fw-bold mx-sm-auto mx-md-auto mx-lg-1 mx-0 " (click)="onSearch($event)">Search</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+  <!-- ======= Search Section ======= -->
+ 

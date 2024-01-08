@@ -1,0 +1,16 @@
+<app-header></app-header>
+<!-- <div >
+  <img src="../assets/img/66.gif" alt="Your GIF Alt Text">
+</div> -->
+<div *ngIf="(loadingService.isLoading$ | async);  else content" class="loadingGif">
+  <!-- Show loading GIF or message here -->
+  <!-- <img src="../assets/img/66-blue.gif" alt="Your GIF Alt Text"> -->
+  <img src="../assets/img/lungs.gif" alt="Your GIF Alt Text">
+
+</div>
+<!-- <router-outlet *ngIf="(!loadingService.isLoading$)"></router-outlet> -->
+
+<ng-template #content>
+  <router-outlet></router-outlet>
+</ng-template>
+<app-footer></app-footer>

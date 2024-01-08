@@ -1,0 +1,469 @@
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Profile</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item active">Profile</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section profile">
+    <div class="row">
+      <div class="col-xl-4">
+
+        <div class="card">
+          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+            <img src="assets/img/userbw.png" alt="Profile" class="rounded-circle">
+            <h2>{{name}}</h2>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-xl-8">
+
+        <div class="card">
+          <div class="card-body pt-3">
+            <!-- Bordered Tabs -->
+            <ul class="nav nav-tabs nav-tabs-bordered">
+
+              <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab"
+                  data-bs-target="#profile-overview">Overview</button>
+              </li>
+
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Medical History</button>
+              </li>
+
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Visits</button>
+              </li>
+
+            </ul>
+            <div class="tab-content pt-2">
+
+              <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+                <h5 class="card-title">Profile Details</h5>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                  <div class="col-lg-9 col-md-8">{{name}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Date Of Birth</div>
+                  <div class="col-lg-9 col-md-8">{{dateOfBirth | date: 'dd/MM/yyyy':'en-us'}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Gender</div>
+                  <div class="col-lg-9 col-md-8">{{gender}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Phone Number</div>
+                  <div class="col-lg-9 col-md-8">{{phoneNumber}}</div>
+                </div>
+
+
+              </div>
+
+              <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                <!-- medical history Form -->
+
+                <!-- <div *ngIf="patientDto">
+                  <h3 class="card-title">{{ patientDto.name }}'s Profile</h3> -->
+                <ng-container *ngIf="hasMedicalHistory || showMedicalHistoryForm; else showError">
+                  <form [formGroup]="form" (ngSubmit)="onSubmitt($event)">
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-4 col-lg-3 col-form-label">Martial Status</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="martialStatus" [value]="true"
+                              [checked]="form.get('martialStatus')?.value === true"> Married
+                          </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="martialStatus" [value]="false"
+                              [checked]="form.get('martialStatus')?.value === false"> Single
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-4 col-lg-3 col-form-label">Pregnancy</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="pregnancy" [value]="true"
+                              [checked]="form.get('pregnancy')?.value === true"> Yes
+                          </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="pregnancy" [value]="false"
+                              [checked]="form.get('pregnancy')?.value === false"> No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                      <label class="col-md-4 col-lg-3 col-form-label">Heart Disease</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="heartDisease" [value]="true"
+                              [checked]="form.get('heartDisease')?.value === true"> Yes
+                          </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="heartDisease" [value]="false"
+                              [checked]="form.get('heartDisease')?.value === false"> No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-4 col-lg-3 col-form-label">Asthma</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="asthma" [value]="true"
+                              [checked]="form.get('asthma')?.value === true"> Yes
+                          </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="asthma" [value]="false"
+                              [checked]="form.get('asthma')?.value === false"> No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                      <label class="col-md-4 col-lg-3 col-form-label">Low Blood Pressure:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="lowBloodPressure"
+                              [value]="true" [checked]="form.get('lowBloodPressure')?.value === true"> Yes
+                          </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="lowBloodPressure"
+                              [value]="false" [checked]="form.get('lowBloodPressure')?.value === false"> No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-4 col-lg-3 col-form-label">High Blood Pressure:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="highBloodPressure"
+                              [value]="true" [checked]="form.get('highBloodPressure')?.value === true"> Yes
+                          </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="highBloodPressure"
+                              [value]="false" [checked]="form.get('highBloodPressure')?.value === false"> No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                      <label class="col-md-4 col-lg-3 col-form-label">Diabetes:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="diabetes" [value]="true"
+                              [checked]="form.get('diabetes')?.value === true"> Yes
+                          </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="diabetes" [value]="false"
+                              [checked]="form.get('diabetes')?.value === false"> No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-4 col-lg-3 col-form-label">Smoker:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="smoker" [value]="true"
+                              [checked]="form.get('smoker')?.value === true"> Yes
+                          </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="smoker" [value]="false"
+                              [checked]="form.get('smoker')?.value === false"> No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-4 col-lg-3 col-form-label">Allergies:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="allergies" [value]="true"
+                              [checked]="form.get('allergies')?.value === true"> Yes
+                          </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="allergies" [value]="false"
+                              [checked]="form.get('allergies')?.value === false"> No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-4 col-lg-3 col-form-label">Anxiety or Panic Disorder:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="anxityOrPanicDisorder"
+                              [value]="true" [checked]="form.get('anxityOrPanicDisorder')?.value === true"> Yes
+                          </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="anxityOrPanicDisorder"
+                              [value]="false" [checked]="form.get('anxityOrPanicDisorder')?.value === false"> No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                      <label class="col-md-4 col-lg-3 col-form-label">Depression:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="depression" [value]="true"
+                              [checked]="form.get('depression')?.value === true"> Yes
+                          </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input type="radio" class="form-check-input" formControlName="depression" [value]="false"
+                              [checked]="form.get('depression')?.value === false"> No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                      <label for="company" class="col-md-4 col-lg-3 col-form-label" for="bloodGroup">Blood
+                        Group:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" id="bloodGroup" formControlName="bloodGroup" class="form-control" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="company" class="col-md-4 col-lg-3 col-form-label" for="hepatitis">Hepatitis:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" id="hepatitis" formControlName="hepatitis" class="form-control" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="company" class="col-md-4 col-lg-3 col-form-label" for="medication">Medication:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" id="medication" formControlName="medication" class="form-control"
+                          id="company" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label class="col-md-4 col-lg-3 col-form-label" for="previousSurgeries">Previous
+                        Surgeries:</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="text" id="previousSurgeries" formControlName="previousSurgeries"
+                          class="form-control" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="about" class="col-md-4 col-lg-3 col-form-label"> Other: </label>
+                      <div class="col-md-8 col-lg-9">
+                        <textarea name="about" class="form-control" type="text" id="other" formControlName="other"
+                          style="height: 100px"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="text-center" *ngIf="hasMedicalHistory">
+                      <button type="submit" class="btn btn-primary" (click)="onSubmitt($event)">Save Changes</button>
+                    </div>
+                    <div class="text-center" *ngIf="showMedicalHistoryForm" >
+                      <button type="submit" class="btn btn-primary" (click)="addRecord($event)">Add</button>
+                    </div>
+                  </form>
+                </ng-container>
+
+                <ng-template #showError>
+                  <h4 class="text-center pb-3 pt-3">This patient doesn't have a medical history yet.</h4>
+                  <div class="d-flex justify-content-center align-items-center">
+                  <button class="btn btn-primary " (click)="addMedicalHistory()">Add Medical History</button>
+                   </div>
+                </ng-template>
+                <!-- <div *ngIf="noMedicalHistory">
+                  <p>.</p>
+                  <button class="btn btn-primary" (click)="addMedicalHistory()">Add Medical History</button>
+                </div> -->
+                <!-- end medical history Form -->
+                <!-- </div> -->
+
+               
+
+                <div class="tab-pane fade pt-3" id="profile-change-password">
+                  <!-- Change Password Form -->
+                  <form>
+
+                    <div class="row mb-3">
+                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="password" type="password" class="form-control" id="currentPassword">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="newpassword" type="password" class="form-control" id="newPassword">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Change Password</button>
+                    </div>
+                  </form><!-- End Change Password Form -->
+
+                </div>
+
+              </div><!-- End Bordered Tabs -->
+              <div class="tab-pane fade pt-3" id="profile-settings">
+
+                <!-- Visits Form -->
+        
+                <form [formGroup]="form">
+                  <div class="row mb-3">
+                    <div>
+                      <!-- col-md-8 col-lg-9 -->
+                      <div *ngIf="visits && visits.length > 0">
+        
+                        <div *ngFor="let visit of visits; let i = index" class="card visitCard p-5">
+                          <div class="cardSign">
+                            <i class="bi bi-clock"
+                              *ngIf="!visit.comments && !visit.prescription && !visit.symptoms && !formSubmitted[i]"></i>
+                            <i class="bi bi-check"
+                              *ngIf="visit.comments || visit.prescription || visit.symptoms || formSubmitted[i]"></i>
+                          </div>
+        
+                          <h3 class="clr3">Visit <span class="clr title">#{{ visits.length - i }}</span></h3>
+                          <div class="card p-3">
+                            <p><span class="clr2">Date of Visit: </span>{{ visit.dateOfVisit | date }}</p>
+                            <p *ngIf="visit.symptoms"><span class="clr2">Symptoms: </span>{{ visit.symptoms }}</p>
+                            <p *ngIf="visit.prescription"><span class="clr2">Prescription: </span>{{
+                              visit.prescription
+                              }}</p>
+                            <p *ngIf="visit.comments"><span class="clr2">Comments: </span>{{ visit.comments }}</p>
+                            <div
+                              *ngIf="!visit.comments && !visit.prescription && !visit.symptoms && visit.visitStatus == 'inProgress' ">
+        
+                              <div class="d-md-flex d-block textareaDiv">
+                                <p for="symptoms"><span class="clr2">Symptoms:</span></p>
+                                <textarea type="text" id="symptoms" formControlName="symptoms"
+                                  (input)="enableButton(i)"
+                                  [attr.disabled]="!cardButtonEnabled[i] ? true : null"></textarea>
+                              </div>
+        
+                              <div class="d-md-flex d-block textareaDiv">
+                                <p for="prescription"><span class="clr2">Prescription:</span></p>
+                                <textarea type="text" id="prescription" formControlName="prescription"
+                                  (input)="enableButton(i)"
+                                  [attr.disabled]="!cardButtonEnabled[i] ? true : null"></textarea>
+                              </div>
+        
+                              <div class="d-md-flex d-block textareaDiv">
+                                <p for="comments"><span class="clr2">Comments:</span></p>
+                                <textarea type="text" id="comments" formControlName="comments"
+                                  (input)="enableButton(i)"
+                                  [attr.disabled]="!cardButtonEnabled[i] ? true : null"></textarea>
+                              </div>
+        
+                              <div class="text-center submitButton">
+                                <button type="submit" class="btn btn-primary" (click)="onSubmit($event, visit.id, i)"
+                                  [attr.disabled]="!cardButtonEnabled[i] || formSubmitted[i] ? true : null">
+                                  Save Changes
+                                </button>
+                              </div>
+        
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form><!-- End visits Form -->
+        
+        
+        
+        
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+</main><!-- End #main -->

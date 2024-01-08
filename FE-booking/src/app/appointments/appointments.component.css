@@ -1,0 +1,219 @@
+*{
+  --futureColor :  #3fbcc0;
+  --todayColor :#25a825;
+  --pastColor : grey;
+}
+.profileHeader{
+  margin-top: 30px;
+}
+
+.patientVisitsCard{
+  border: 2px #3fbcc0 solid;
+  width: 60%;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 2%;
+  box-shadow:  0 2px 6px #3fbcc0;
+}
+.patientVisitsTitle span{
+color: #3fbcc0;
+}
+.patientVisitsTitle{
+border-bottom: 2px #3fbcc0 solid;
+width: fit-content;
+padding-bottom: 5px;
+}
+.patientVisitsCard p{
+  margin: 0;
+}
+.patientVisitsCard p span{
+  color: #3fbcc0;
+}
+
+
+.future-visit {
+  border: 2px var(--futureColor) solid;
+  box-shadow:  0 2px 6px var(--futureColor);
+  position: relative;
+}
+.future-visit span{
+  color: var(--futureColor);
+}
+.future-visit .patientVisitsTitle{
+  border-bottom: 2px var(--futureColor) solid;
+}
+.future-visit p span{
+  color: var(--futureColor);
+}
+
+
+.today-visit {
+  border: 2px var(--todayColor) solid;
+  box-shadow:  0 2px 6px var(--todayColor);
+  position: relative;
+}
+.today-visit span{
+  color: var(--todayColor);
+}
+.today-visit .patientVisitsTitle{
+  border-bottom: 2px var(--todayColor) solid;
+}
+.today-visit p span{
+  color: var(--todayColor);
+}
+.today-visit::before {
+  content: 'Today';
+  margin: 0 auto;
+  height: 40px;
+  border: 20px solid var(--todayColor);
+  border-left: 25px solid transparent;
+  position: absolute;
+  right: 50%;
+  top: 0;
+  transform: translateX(50%);
+  background-color: var(--todayColor);
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: x-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* //////// */
+.past-visit {
+  border: 2px var(--pastColor) solid;
+  box-shadow:  0 2px 6px var(--pastColor);
+  position: relative;
+}
+.past-visit span{
+  color: var(--pastColor);
+}
+.past-visit .patientVisitsTitle{
+  border-bottom: 2px var(--pastColor) solid;
+}
+.past-visit p span{
+  color: var(--pastColor);
+}
+.past-visit .bookmark {
+  margin: 15px;
+    height: 95px;
+    border: 20px solid var(--pastColor);
+    border-bottom: 25px solid transparent;
+    position: absolute;
+    right: -17px;
+    top: -20px;
+}
+
+@media screen and (max-width: 700px) {
+  .bookmark {
+    display: none;
+  }
+  .buttons{
+    flex-wrap: wrap;
+  }
+  .today-visit::before {
+    display: none;
+  }
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.past-visit form label{
+  color: var(--pastColor);
+}
+.today-visit form label{
+  color: var(--todayColor);
+}
+
+.ratingDiv{
+  display: flex;
+  align-items: center;
+  /* background-color: #93b293; */
+}
+.ratingDiv label{
+  margin: auto 0;
+  margin-right: 5px;
+}
+.ratingDiv textarea{
+  border-radius: 5px;
+  width: 50%;
+  height: 100px;
+
+}
+.past-visit textarea{
+  box-shadow:  0 2px 6px var(--pastColor);
+  border: var(--pastColor) 2px solid;
+}
+.today-visit textarea{
+  box-shadow:  0 2px 6px var(--todayColor);
+  border: var(--todayColor) 2px solid;
+}
+.buttonDiv{
+  display: flex;
+  justify-content: end;
+}
+.buttonDiv button{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: var(--pastColor);
+  color: white;
+  margin-right: 5px;
+  padding: 5px;
+  width: 110px;
+  opacity: 0.5;
+}
+.past-visit .buttonDiv button{
+  background-color: var(--pastColor);
+}
+.today-visit .buttonDiv button{
+  background-color: var(--todayColor);
+}
+@media screen and (max-width: 700px) {
+  .ratingDiv{
+    display: block
+  }
+  .ratingDiv textarea{
+    display: block;
+  }
+  .buttonDiv{
+    display: flex;
+    justify-content: end;
+  }
+}
+.rating-stars {
+  font-size: 20px;
+
+  span {
+    cursor: pointer;
+
+    i {
+      margin: 0 2px;
+      color: #ffd700;
+    }
+  }
+}
+
+.fiiled-stars {
+  color: #ffd700;
+}
+.rating-stars i:hover{
+  color: #ffd700;
+}
+
+.filled-star {
+  color: #ffd700;
+}
+
+
+.delete{
+  margin-left: 95%;
+}
+.delete:hover{
+  opacity: 0.6;
+}

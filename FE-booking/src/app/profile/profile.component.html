@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="profileHeader section-title">
+      <h2>My Profile</h2>
+    </div>
+  <div class="profileContent mb-4 border ">
+    <div class="profileImage">
+      <img src="assets/img/userB.png" alt="">
+    </div>
+    <div class="profileInfo" *ngIf="userData">
+      <div class="maindata">
+        <div class="data">Name </div>
+        <div class="outputdata">{{userData.name}}</div>
+      </div>
+      <div class="maindata">
+        <div class="data">Phone Number</div>
+        <div class="outputdata"> {{userData.phoneNumber}}</div>
+      </div>
+      <div class="maindata">
+        <div class="data">Gender </div>
+        <div class="outputdata"> {{userData.gender}}</div>
+      </div>
+      <div class="maindata mb-4">
+        <div class="data">Date of birth </div>
+        <div class="outputdata">{{ userData.dateOfBirth | date:'dd/MM/yyyy':'en-US' }}</div>
+        <!-- <div class="outputdata"> {{userData.dateOfBirth && dob}}</div> -->
+    </div>
+  </div>
+</div>
+<div class="buttons pb-2">
+  <div class="d-flex justify-content-center mb-4">
+    <button class="btn appointment-btn scrollto " disabled type="button" [routerLink]="['/profile']">
+        My Profile
+    </button>
+  </div>
+  <div class="d-flex justify-content-center mb-4">
+    <button class="btn appointment-btn scrollto "  type="button" [routerLink]="['/medical-history']">
+        My Medical History
+    </button>
+  </div>
+  <div class="d-flex justify-content-center mb-4">
+    <button class="btn appointment-btn scrollto"  type="button" [routerLink]="['/appointments']">
+        My Appointments
+    </button>
+  </div>
+</div>
