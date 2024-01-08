@@ -10,6 +10,12 @@ import Swal from 'sweetalert2';
   templateUrl: './patient-visits.component.html',
   styleUrls: ['./patient-visits.component.css']
 })
+
+
+export interface GetPatientVisitsChildDTO {
+  // ... other properties ...
+  doctorName: string;
+}
 export class PatientVisitsComponent {
 patientPhoneNumbaer?: string;
 patientVisits?: GetPatientVisitDto
