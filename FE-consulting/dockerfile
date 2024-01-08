@@ -1,0 +1,33 @@
+# Stage 1: Build Angular App
+FROM node:18 AS builder
+
+WORKDIR /app
+
+# Copy only the package.json and package-lock.json to take advantage of Docker cache
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the entire application
+COPY . .
+
+# Build the Angular app
+RUN npm run build --prod
+
+# Stage 2: Create a minimal Nginx image and copy the built Angular app
+FROM nginx:alpine
+
+
+# Remove the default Nginx static content
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy the Angular build from the previous stage to Nginx web root
+COPY --from=builder /app/dist/* /usr/share/nginx/html/
+
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
