@@ -7,13 +7,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --force
 
 # Copy the entire application
 COPY . .
 
 # Build the Angular app
-RUN npm run build --prod
+RUN npm run build --prod --force
 
 # Stage 2: Create a minimal Nginx image and copy the built Angular app
 FROM nginx:alpine
