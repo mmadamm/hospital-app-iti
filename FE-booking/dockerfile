@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build --prod
 
 # Stage 2: Create a minimal Nginx image and copy the built Angular app
-FROM nginx:latest-alpine
+FROM nginx:alpine
 
 
 # Remove the default Nginx static content
