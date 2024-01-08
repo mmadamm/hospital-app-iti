@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { registrationService } from '../services/registration.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RegisterAdminDto } from '../Types/RegisterAdminDto';
+import { RegisterAdminDto } from '../types/RegisterAdminDto';
 import { NgModule }      from '@angular/core';
 import { Router } from '@angular/router';
 import { phoneNumberLengthValidator } from '../services/registerPhoneNumber';

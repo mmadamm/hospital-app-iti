@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { ReceptionRegisterDto } from '../Types/RegisterReceptionDto';
-import { RegisterAdminDto } from '../Types/RegisterAdminDto';
-import {RegisterPatientDto} from '../Types/RegisterPatientDto';
+import { ReceptionRegisterDto } from '../types/RegisterReceptionDto';
+import { RegisterAdminDto } from '../types/RegisterAdminDto';
+import {RegisterPatientDto} from '../types/RegisterPatientDto';
 import { Observable } from 'rxjs';
 
 @Injectable({

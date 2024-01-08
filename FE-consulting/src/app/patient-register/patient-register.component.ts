@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { phoneNumberLengthValidator } from '../services/registerPhoneNumber';
 import { passwordValidators } from '../services/password.service';
 import { NgToastService } from 'ng-angular-popup';
-import {RegisterPatientDto} from '../Types/RegisterPatientDto';
+import {RegisterPatientDto} from '../types/RegisterPatientDto';
 import { registrationService } from '../services/registration.service';
 
 
