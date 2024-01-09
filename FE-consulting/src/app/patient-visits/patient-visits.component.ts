@@ -11,23 +11,23 @@ import Swal from 'sweetalert2';
   styleUrls: ['./patient-visits.component.css']
 })
 
-
 export interface GetPatientVisitsChildDTO {
   // ... other properties ...
   doctorName: string;
 }
+
 export class PatientVisitsComponent {
-patientPhoneNumbaer?: string;
-patientVisits?: GetPatientVisitDto
-  constructor(private patientService : PatientService2){}
-  
-  
+  patientPhoneNumber?: string; // Corrected the variable name
+  patientVisits?: GetPatientVisitDto; // Corrected the variable name
+
+  constructor(private patientService: PatientService2) { }
+
   search() {
-    if (!this.patientPhoneNumbaer) {
+    if (!this.patientPhoneNumber) { // Corrected the variable name
       return;
     }
 
-    this.patientService.GetPatientVisitsByPhone(this.patientPhoneNumbaer).subscribe({
+    this.patientService.GetPatientVisitsByPhone(this.patientPhoneNumber).subscribe({
       next: (patientVisits) => {
         this.patientVisits = patientVisits;
       },
@@ -36,23 +36,24 @@ patientVisits?: GetPatientVisitDto
       },
     });
   }
-  delete(e: Event , id: number){
+
+  delete(e: Event, id: number) {
     this.showConfirmation(id);
   }
 
-  showConfirmation( id: number) {
+  showConfirmation(id: number) {
     Swal.fire({
-      title: 'Are you sure you want to delete vist?',
+      title: 'Are you sure you want to delete visit?',
       text: 'You won\'t be able to revert this!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
       cancelButtonText: 'No, cancel!',
     }).then((result) => {
-      if (result.value) {
+      if (result.isConfirmed) { // Check if user clicked "Yes"
         this.patientService.deleteAppointment(id).subscribe({
-          next:()=>{
-            this.patientService.GetPatientVisitsByPhone(this.patientPhoneNumbaer!).subscribe({
+          next: () => {
+            this.patientService.GetPatientVisitsByPhone(this.patientPhoneNumber!).subscribe({
               next: (patientVisits) => {
                 this.patientVisits = patientVisits;
               },
@@ -61,15 +62,15 @@ patientVisits?: GetPatientVisitDto
               },
             });
           },
-          error:(error)=>{
-            console.log("delete patient visit api failed",error)
+          error: (error) => {
+            console.log('Delete patient visit API failed', error);
           }
-        })
+        });
+
         Swal.fire('Deleted!', 'Your visit has been deleted.', 'success');
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'Your file is safe :)', 'info');
       }
     });
   }
-  
 }
