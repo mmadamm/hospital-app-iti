@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraduationProject.APIs", "graduationproject\GraduationProject.APIs.csproj", "{864EF39E-1247-4706-8637-1DDF5DC86CDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraduationProject.APIs", "graduation project\GraduationProject.APIs.csproj", "{864EF39E-1247-4706-8637-1DDF5DC86CDB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "graduationProject.DAL", "graduationProject.DAL\graduationProject.DAL.csproj", "{89ED998B-A91D-41CB-BB7B-1741808480F8}"
 EndProject
