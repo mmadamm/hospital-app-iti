@@ -24,7 +24,6 @@ import { BookVisitComponent } from './book-visit/book-visit.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 
 import { PatientRegisterComponent } from './patient-register/patient-register.component';
-import { PatientVisitsComponent } from './patient-visits/patient-visits.component';
 
 const routes: Routes = [
   {path: '' , component:DashboardComponent},
@@ -46,8 +45,7 @@ const routes: Routes = [
   {path: 'receptionRegister',canActivate: [adminAuthGuard], component:ReceptionRegisterComponent},
   {path: 'receptionProfile', canActivate: [receptionAuthGuard], component: ReceptionProfileComponent },
   {path: 'PatientRegister',component:PatientRegisterComponent},
-  {path : 'bookAppointment' , canActivate: [receptionAuthGuard], component : BookAppointmentComponent},
-  {path: 'patientsVisits' , component: PatientVisitsComponent  }
+  {path : 'bookAppointment' , canActivate: [receptionAuthGuard], component : BookAppointmentComponent}
 ];
 
 @NgModule({
