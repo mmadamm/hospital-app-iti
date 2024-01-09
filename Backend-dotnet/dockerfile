@@ -10,7 +10,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0  AS runtime
 
 WORKDIR /app
 COPY --from=build /app/publish .
-EXPOSE 8000
+EXPOSE 5000
+EXPOSE 7267
+
 
 
 ENTRYPOINT ["dotnet", "graduationproject.dll","migrate"]
