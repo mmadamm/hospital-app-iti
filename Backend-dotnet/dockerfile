@@ -18,8 +18,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-# Expose the port your application will run on
 EXPOSE 5000
 
-# Set the entry point without 'migrate'
 ENTRYPOINT ["dotnet", "GraduationProject.APIs.dll"]
